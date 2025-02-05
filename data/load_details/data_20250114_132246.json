@@ -1,0 +1,25 @@
+{
+    "loads": [
+        {
+            "Route": "Mutare TO Kwekwe",
+            "Rate": "$666555444 Per Load",
+            "Product": "Maize",
+            "Payment Terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+            "Trucks Needed": 1
+        },
+        {
+            "Route": "Harare TO Bulawayo",
+            "Rate": "$1111111 Per Load",
+            "Product": "Bagged Lime",
+            "Payment Terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+            "Trucks Needed": 3
+        }
+    ],
+    "contacts": [
+        {
+            "Name": "Tinashe Butsa",
+            "Number": 263715775261
+        }
+    ],
+    "timestamp": "2025-01-14 13:22:46"
+}

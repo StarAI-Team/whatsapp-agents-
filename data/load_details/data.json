@@ -1,0 +1,45 @@
+[
+    {
+        "wa_id": "263715775261",
+        "route": "Bulawayo TO Kwekwe",
+        "rate": "$2000 Per Load",
+        "product": "Maize",
+        "payment_terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+        "trucks_needed": 1,
+        "time": "2025-01-05 13:34:29"
+    },
+    {
+        "wa_id": "263715775261",
+        "route": "Harare TO CHINHOYI",
+        "rate": "$1450 Per Load",
+        "product": "BAGGED LIME",
+        "payment_terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+        "trucks_needed": 3,
+        "time": "2025-01-05 13:34:49"
+    },
+    {
+        "loads": [
+            {
+                "Route": "Mutare TO Kwekwe",
+                "Rate": "$666555444 Per Load",
+                "Product": "Maize",
+                "Payment Terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+                "Trucks Needed": 1
+            },
+            {
+                "Route": "Harare TO Bulawayo",
+                "Rate": "$1111111 Per Load",
+                "Product": "Bagged Lime",
+                "Payment Terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+                "Trucks Needed": 3
+            }
+        ],
+        "contacts": [
+            {
+                "Name": "Tinashe Butsa",
+                "Number": 263715775261
+            }
+        ],
+        "time": "2025-01-14 13:15:08"
+    }
+]

@@ -1,0 +1,25 @@
+{
+    "loads": [
+      {
+        "Route": "Chiredzi TO Kwekwe",
+        "Rate": "$100000000 Per Load",
+        "Product": "Maize",
+        "Payment Terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+        "Trucks Needed": 1
+      },
+      {
+        "Route": "Gokwe TO Chinhoyi",
+        "Rate": "$600000 Per Load",
+        "Product": "Sugar cane",
+        "Payment Terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+        "Trucks Needed": 1
+      }
+    ],
+    "contacts": [
+      {
+        "Name": "John Doe",
+        "Number": "+263715775261"
+      }
+    ]
+  }
+  

@@ -54,6 +54,23 @@
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <a href="{{ url_for('upload_batches') }}">
+            <i class="fa-solid fa-upload"></i>
+            <span>Uploads</span>
+        </a>
+        <a href="{{ url_for('view_records') }}">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Records</span>
+        </a>
+        <a href="{{ url_for('logout') }}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+    <a href="{{ url_for('option') }}" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
     <h1>Records</h1>
     <table>
         <thead>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>Star Chatbots ADMIN </title>
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-section">
+            <div class="logo">
+                <h1>Star<span>Chatbot</span></h1>
+            </div>
+            <form method="POST" action="{{ url_for('login') }}"
+            class="login-form">
+                <label for="username">Username</label>
+                <input type="username" id="username" name="username" placeholder="Value">
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Value">
+                
+                <button type="submit" class="signin-btn">Sign In</button>
+            </form>
+            {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-danger mt-3">
+              {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+        </div>
+        <div class="image-section">
+            <img src="/static/assets/images/vase.png" alt="Decorative Vase">
+        </div>
+    </div>
+</body>

@@ -34,7 +34,7 @@ def create_app():
     ENV = 'dev'
     if ENV == 'dev':
         app.debug = True
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin123@localhost/takura'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost/takura'
     else:
         app.debug = False
         SQLALCHEMY_DATABASE_URI = 'postgres://u1n0nspkcs7s1c:p51be4287c7ae4e0b0f325b0262726d2b475befad2580f18461ff0c7913dba823@cfls9h51f4i86c.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d3vsq6o1lrtt1c'
@@ -192,8 +192,7 @@ def upload_batches():
 
                 def create_vector_store_from_json(json_data, store_name="Available Loads"):
                     # Initialize OpenAI client
-                    OPENAI_API_KEY = "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"
-                    client = OpenAI(api_key=OPENAI_API_KEY)
+                    client = OpenAI()
                     
                     # Create the vector store
                     vector_store = client.beta.vector_stores.create(name=store_name)
@@ -302,9 +301,7 @@ def upload_batches():
                 except openai.APIError as e:
                     print(f"Failed: {e}")
 
-            # return jsonify(combined_data)
-            flash(f"Information uploaded, contacting transporters...", "success")
-            return render_template('uploads.html')
+            return jsonify(combined_data)
 
         except Exception as e:
             flash(f"Error processing files: {str(e)}", "danger")
@@ -312,45 +309,11 @@ def upload_batches():
 
     return render_template('uploads.html')
 
-@app.route('/view_records', methods=['GET'])
-def view_records():
-    # Query the database for records from the Contact table
-    records = Contact.query.order_by(Contact.created_at.desc()).all()
-
-    # Convert database records into a format compatible with the HTML template
-    formatted_records = [
-        {
-            "name": record.name,
-            "contact_number": record.number,
-            "rating": 5,  # Placeholder value, adjust if needed
-            "conversation_transcript": record.created_at,  # Placeholder, replace if available
-            "summary": "No summary provided",  # Placeholder, replace if needed
-            "status": record.id,  # Example status, modify based on your business logic
-            "action": "Details"
-        }
-        for record in records
-    ]
-
-    # Render the view_records.html template and pass the formatted records
-    return render_template('view_records.html', records=formatted_records)
-
-@app.route('/options')
-def option():
-    
-    return render_template('options.html')
-
-@app.route('/logout')
-def logout():
-    session.pop('username', None)
-    return redirect(url_for('login'))
-
-
-
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
     logging.info("Flask app started")
-    app.run()
+    app.run(host="0.0.0.0", port=8000)
 
 # if __name__ == "__main__":
 #     app = create_app()

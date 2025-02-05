@@ -1,0 +1,25 @@
+{
+    "loads": [
+        {
+            "Route": "Bulawayo TO Kwekwe",
+            "Rate": "$2000 Per Load",
+            "Product": "Maize",
+            "Payment Terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+            "Trucks Needed": 1
+        },
+        {
+            "Route": "Harare TO Chinhoyi",
+            "Rate": "$1450 Per Load",
+            "Product": "Bagged Lime",
+            "Payment Terms": "50% Upon loading and Balance 50% upon Submission of Original PODs",
+            "Trucks Needed": 3
+        }
+    ],
+    "contacts": [
+        {
+            "Name": "Tinashe",
+            "Number": 263715775261
+        }
+    ],
+    "timestamp": "2025-01-27 10:57:19"
+}
