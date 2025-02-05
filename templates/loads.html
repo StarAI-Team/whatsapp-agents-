@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipper Upload - Star International</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> <!-- FontAwesome Fix -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f9fc;
+            display: flex;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+    width: 120px; /* Adjust width to fit text */
+    height: 100vh;
+    background-color: #2d80df;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    font-size: 18px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.sidebar a i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+
+        .container {
+            flex: 1;
+            display: flex;
+        }
+
+        .upload-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+        }
+
+        .image-section {
+    flex: 1;
+    width: 50vw;  /* Takes exactly 50% of the screen */
+    height: 100vh; /* Full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6f0fa;
+    overflow: hidden;  /* Prevents scrolling issues */
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures full coverage without stretching */
+}
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .upload-btn {
+            padding: 10px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upload-btn:hover {
+            background-color: #357abd;
+        }
+        .back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #2d80df;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.back-button i {
+    margin-right: 5px;
+}
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <a href="{{ url_for('upload_batches') }}">
+            <i class="fa-solid fa-upload"></i>
+            <span>Uploads</span>
+        </a>
+        <a href="{{ url_for('view_records') }}">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Records</span>
+        </a>
+        <a href="{{ url_for('logout') }}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+    
+
+    <div class="container">
+        <!-- Upload Form Section -->
+        <div class="upload-section">
+            <a href="{{ url_for('option') }}" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+            <h1>Upload Batch</h1>
+            <form method="POST" action="{{ url_for('upload_batches') }}" enctype="multipart/form-data">
+                
+                <label for="contacts_file">Select Shippers File (CSV or Excel)</label>
+                <input type="file" id="contacts_file" name="contacts_file" accept=".csv,.xlsx" required>
+                
+                <button type="submit" class="upload-btn">Upload Batch</button>
+            </form>
+        </div>
+
+        <!-- Image Section -->
+        <div class="image-section">
+            <img src="/static/assets/images/vase.png" alt="Decorative Vase">
+        </div>
+    </div>
+</body>
+</html>

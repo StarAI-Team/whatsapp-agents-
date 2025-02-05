@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options - Star International</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f9fc;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 120px;
+            background-color: #2d80df;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            font-size: 18px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar a i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .selection-section {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .option-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            width: 200px;
+        }
+
+        .option-btn:hover {
+            background-color: #357abd;
+        }
+
+        .image-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e6f0fa;
+            overflow: hidden;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <a href="{{ url_for('upload_batches') }}">
+            <i class="fa-solid fa-upload"></i>
+            <span>Uploads</span>
+        </a>
+        <a href="{{ url_for('view_records') }}">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Records</span>
+        </a>
+        <a href="{{ url_for('logout') }}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
+    <div class="container">
+        <!-- Selection Section -->
+        <div class="selection-section">
+            <h1>Select Option</h1>
+            <div class="button-container">
+                <form method="POST" action="{{ url_for('upload_batches') }}">
+                    <button type="submit" class="option-btn">Transporter</button>
+                </form>
+
+                <form method="POST" action="{{ url_for('load') }}">
+                    <button type="submit" class="option-btn">Shipper</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Section -->
+    <div class="image-section">
+        <img src="{{ url_for('static', filename='images/vase.png') }}" alt="Decorative Vase">
+    </div>
+</body>
+</html>

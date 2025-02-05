@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Upload - Star International</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <a href="{{ url_for('view_records') }}" class="view-records-btn">View Records</a>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f9fc;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .upload-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-color: #ffffff;
+        }
+
+        .upload-section h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .upload-section h1 span {
+            color: #4a90e2;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #666666;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .upload-btn {
+            padding: 10px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #2d80df;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .upload-btn:hover {
+            background-color: #0862bc;
+        }
+
+        .image-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e6f0fa;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+        }
+        .view-records-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4a90e2;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 600;
+        }
+
+        .view-records-btn:hover {
+        background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Upload Form Section -->
+        <div class="upload-section">
+            <h1>Star<span>Chatbot</span></h1>
+            <form method="POST" action="{{ url_for('upload_batches') }}" enctype="multipart/form-data">
+                <label for="loads_file">Select Loads File (CSV or Excel)</label>
+                <input type="file" id="loads_file" name="loads_file" accept=".csv,.xlsx" required>
+                
+                <label for="contacts_file">Select Contacts File (CSV or Excel)</label>
+                <input type="file" id="contacts_file" name="contacts_file" accept=".csv,.xlsx" required>
+                
+                <button type="submit" class="upload-btn">Upload Batch</button>
+            </form>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert alert-info mt-3">
+                        {{ messages[0] }}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <!-- Image Section -->
+        <div class="image-section">
+            <img src="/static/assets/images/vase.png" alt="Decorative Vase">
+        </div>
+    </div>
+</body>
+</html>
