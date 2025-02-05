@@ -339,6 +339,11 @@ def option():
     
     return render_template('options.html')
 
+@app.route('/loads')
+def loads():
+    
+    return render_template('loads.html')
+
 @app.route('/logout')
 def logout():
     session.pop('username', None)

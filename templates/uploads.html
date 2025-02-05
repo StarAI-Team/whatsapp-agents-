@@ -5,34 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Batch Upload - Star International</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <a href="{{ url_for('view_records') }}" class="view-records-btn">View Records</a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #f7f9fc;
-        }
-
-        .container {
             display: flex;
             height: 100vh;
         }
 
-        .upload-section {
-            flex: 1;
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 120px;
+            background-color: #2d80df;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            font-size: 18px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar a i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px;
+            padding: 20px;
+        }
+
+        .upload-section {
+            text-align: center;
             background-color: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .upload-section h1 {
             font-size: 2rem;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #333333;
+            color: #333;
         }
 
         .upload-section h1 span {
@@ -45,17 +79,18 @@
             gap: 15px;
             width: 100%;
             max-width: 400px;
+            margin: auto;
         }
 
         label {
             font-size: 1rem;
-            color: #666666;
+            color: #666;
         }
 
         input[type="file"] {
             padding: 10px;
             font-size: 1rem;
-            border: 1px solid #cccccc;
+            border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f9f9f9;
         }
@@ -63,8 +98,8 @@
         .upload-btn {
             padding: 10px;
             font-size: 1rem;
-            color: #ffffff;
-            background-color: #2d80df;
+            color: white;
+            background-color: #4a90e2;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -72,7 +107,22 @@
         }
 
         .upload-btn:hover {
-            background-color: #0862bc;
+            background-color: #357abd;
+        }
+
+        .view-records-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .view-records-btn:hover {
+            background-color: #357abd;
         }
 
         .image-section {
@@ -87,23 +137,46 @@
             max-width: 100%;
             height: auto;
         }
-        .view-records-btn {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #4a90e2;
-        color: #ffffff;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: 600;
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #4a90e2;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
         }
 
-        .view-records-btn:hover {
-        background-color: #357abd;
+        .back-button i {
+            margin-right: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #357abd;
         }
     </style>
 </head>
 <body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <a href="{{ url_for('upload_batches') }}">
+            <i class="fa-solid fa-upload"></i>
+            <span>Uploads</span>
+        </a>
+        <a href="{{ url_for('view_records') }}">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Records</span>
+        </a>
+        <a href="{{ url_for('logout') }}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
     <div class="container">
         <!-- Upload Form Section -->
         <div class="upload-section">
@@ -117,6 +190,8 @@
                 
                 <button type="submit" class="upload-btn">Upload Batch</button>
             </form>
+
+            <!-- Flash messages -->
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <div class="alert alert-info mt-3">
@@ -124,11 +199,16 @@
                     </div>
                 {% endif %}
             {% endwith %}
+
+            <!-- Back Button -->
+            <a href="{{ url_for('option') }}" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
         </div>
 
         <!-- Image Section -->
         <div class="image-section">
-            <img src="/static/assets/images/vase.png" alt="Decorative Vase">
+            <img src="{{ url_for('static', filename='images/vase.png') }}" alt="Decorative Vase">
         </div>
     </div>
 </body>

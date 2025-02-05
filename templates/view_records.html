@@ -5,27 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Records</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding: 20px;
             background-color: #f7f9fc;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 120px;
+            background-color: #2d80df;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            font-size: 18px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar a i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid #dddddd;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         th, td {
             padding: 10px;
             text-align: left;
+            border-bottom: 1px solid #dddddd;
         }
 
         th {
@@ -37,23 +84,40 @@
             background-color: #f2f2f2;
         }
 
-        .back-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
             background-color: #4a90e2;
-            color: #ffffff;
-            text-decoration: none;
             border-radius: 5px;
-            font-weight: 600;
+            text-decoration: none;
+            margin-top: 20px; /* Adds space from the table */
+            font-weight: bold;
         }
 
-        .back-btn:hover {
+        .back-button i {
+            margin-right: 5px;
+        }
+
+        .back-button:hover {
             background-color: #357abd;
+        }
+
+        .action-btn {
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+
+        .action-btn:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+    <!-- Sidebar Navigation -->
     <div class="sidebar">
         <a href="{{ url_for('upload_batches') }}">
             <i class="fa-solid fa-upload"></i>
@@ -68,37 +132,40 @@
             <span>Logout</span>
         </a>
     </div>
-    <a href="{{ url_for('option') }}" class="back-button">
-        <i class="fa-solid fa-arrow-left"></i> Back
-    </a>
-    <h1>Records</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Contact Number</th>
-                <th>Rating</th>
-                <th>Conversation Transcript</th>
-                <th>Summary</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for record in records %}
-            <tr>
-                <td>{{ record.name }}</td>
-                <td>{{ record.contact_number }}</td>
-                <td>{{ record.rating }}</td>
-                <td>{{ record.conversation_transcript }}</td>
-                <td>{{ record.summary }}</td>
-                <td>{{ record.status }}</td>
-                <td><a href="#">{{ record.action }}</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ url_for('upload_batches') }}" class="back-btn">Back to Uploads</a>
+    <div class="container">
+        <h1>Records</h1>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Contact Number</th>
+                    <th>Rating</th>
+                    <th>Conversation Transcript</th>
+                    <th>Summary</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <td>{{ record.name }}</td>
+                    <td>{{ record.contact_number }}</td>
+                    <td>{{ record.rating }}</td>
+                    <td>{{ record.conversation_transcript }}</td>
+                    <td>{{ record.summary }}</td>
+                    <td>{{ record.status }}</td>
+                    <td><a href="#" class="action-btn">{{ record.action }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <!-- Move the Back Button Here -->
+        <a href="{{ url_for('option') }}" class="back-button">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
+    </div>
 </body>
 </html>
