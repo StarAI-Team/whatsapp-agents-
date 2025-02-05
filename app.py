@@ -192,7 +192,7 @@ def upload_batches():
 
                 def create_vector_store_from_json(json_data, store_name="Available Loads"):
                     # Initialize OpenAI client
-                    OPENAI_API_KEY = "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"
+                    OPENAI_API_KEY = "OPEN_AI_KEY"
                     client = OpenAI(api_key=OPENAI_API_KEY)
                     
                     # Create the vector store
