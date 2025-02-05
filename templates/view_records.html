@@ -119,10 +119,11 @@
 <body>
     <!-- Sidebar Navigation -->
     <div class="sidebar">
-        <a href="{{ url_for('upload_batches') }}">
-            <i class="fa-solid fa-upload"></i>
-            <span>Uploads</span>
+        <a href="{{ url_for('option') }}">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back</span>
         </a>
+        
         <a href="{{ url_for('view_records') }}">
             <i class="fa-solid fa-folder-open"></i>
             <span>Records</span>
@@ -161,11 +162,7 @@
                 {% endfor %}
             </tbody>
         </table>
-    
-        <!-- Move the Back Button Here -->
-        <a href="{{ url_for('option') }}" class="back-button">
-            <i class="fa-solid fa-arrow-left"></i> Back
-        </a>
+
     </div>
 </body>
 </html>

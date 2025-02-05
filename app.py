@@ -143,7 +143,7 @@ def login():
         if username == HARDCODED_USERNAME and password == HARDCODED_PASSWORD:
             session['user_id'] = 1
             flash('Login successful!', 'success')
-            return redirect(url_for('upload'))
+            return redirect(url_for('option'))
         else:
             flash('Invalid username or password', 'danger')
 
@@ -339,7 +339,7 @@ def option():
     
     return render_template('options.html')
 
-@app.route('/loads')
+@app.route('/loads', methods=['GET', 'POST'])
 def loads():
     
     return render_template('loads.html')

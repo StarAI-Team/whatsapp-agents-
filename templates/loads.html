@@ -134,9 +134,9 @@
 <body>
     <!-- Sidebar Navigation -->
     <div class="sidebar">
-        <a href="{{ url_for('upload_batches') }}">
-            <i class="fa-solid fa-upload"></i>
-            <span>Uploads</span>
+        <a href="{{ url_for('option') }}">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back</span>
         </a>
         <a href="{{ url_for('view_records') }}">
             <i class="fa-solid fa-folder-open"></i>
@@ -152,9 +152,6 @@
     <div class="container">
         <!-- Upload Form Section -->
         <div class="upload-section">
-            <a href="{{ url_for('option') }}" class="back-button">
-                <i class="fa-solid fa-arrow-left"></i> Back
-            </a>
             <h1>Upload Batch</h1>
             <form method="POST" action="{{ url_for('upload_batches') }}" enctype="multipart/form-data">
                 
